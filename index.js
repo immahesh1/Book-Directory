@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const api = require('./api/add_book')
+const add_book = require('./api/add_book')
+const fetch_book = require('./api/fetch_book')
 require('dotenv').config()
 const app = express()
 app.use(express.json()); //body-parser
@@ -16,11 +17,14 @@ mongoose.connect(uri,{
 }).then(() => console.log('*************Connected to the database*************')
 ).catch(err => console.log('Database connection error: ',err));
 
+//API calls
+//_________________________________
+//@route: /book/add_book/
+//method: POST
+app.use('/book/',add_book);
 
-app.get('/',(req,res)=>{
-    res.send('Hi');
-});
-
-app.use('/book/',api);
+//@route: /book/
+//method: GET
+app.use('/book/',fetch_book);
 
 app.listen(PORT,()=>console.log(`App started on port: ${PORT}`));
