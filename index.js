@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const add_book = require('./api/add_book')
 const fetch_book = require('./api/fetch_book')
+const book_schema = require('./model/Book')
+
 require('dotenv').config()
 const app = express()
 app.use(express.json()); //body-parser
@@ -31,5 +33,12 @@ app.use('/book/',fetch_book);
 //method: GET
 app.use('/book/:title/',fetch_book);
 
+//@route: /book/update/:title
+//method: PUT
+app.use('/book/',add_book);
+
+//@route: /book/delete/:title
+//method: Delete
+app.use('/book/',add_book);
 
 app.listen(PORT,()=>console.log(`App started on port: ${PORT}`));
