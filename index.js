@@ -31,5 +31,8 @@ app.use('/book/',fetch_book);
 //method: GET
 app.use('/book/:title/',fetch_book);
 
+//@route: /book/delete
+//method: Delete
+
 
 app.listen(PORT,()=>console.log(`App started on port: ${PORT}`));
