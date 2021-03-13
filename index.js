@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const book_schema = require('./model/Book')
+const api = require('./api/add_book')
 require('dotenv').config()
 const app = express()
 app.use(express.json()); //body-parser
@@ -22,15 +21,6 @@ app.get('/',(req,res)=>{
     res.send('Hi');
 });
 
-app.post('/add_book', async(req,res)=>{
-    try{
-        const book_details = new book_schema(req.body)
-        await book_details.save()
-        res.send(`Book entry completed with title: ${req.body.title}`);
-    }catch(err){
-        res.send(`Error occured while book entry.`);
-        console.log(err);
-    }
-});
+app.use('/book/',api);
 
 app.listen(PORT,()=>console.log(`App started on port: ${PORT}`));
