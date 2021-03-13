@@ -18,7 +18,7 @@ mongoose.connect(uri,{
 ).catch(err => console.log('Database connection error: ',err));
 
 //API calls
-//_________________________________
+
 //@route: /book/add_book/
 //method: POST
 app.use('/book/',add_book);
@@ -29,6 +29,7 @@ app.use('/book/',fetch_book);
 
 //@route: /book/title/
 //method: GET
-app.use('/book/title/',fetch_book);
+app.use('/book/:title/',fetch_book);
+
 
 app.listen(PORT,()=>console.log(`App started on port: ${PORT}`));

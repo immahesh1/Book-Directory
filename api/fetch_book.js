@@ -17,12 +17,12 @@ router.get('/title/:title',(req,res)=>{
     const errors = {}
     book_schema.findOne({title:req.params.title})
         .populate('book',['title','subtitle','price','author','format'])
-        .then(record => {
-            if(!record){
+        .then(book => {
+            if(!book){
                 errors.nobook = `Book record with title ${req.params.title} not found.`
                 res.send(errors);
             }
-            res.send(record);
+            res.send(book);
         })
         .catch(err => res.send(err));
 });
