@@ -31,6 +31,10 @@ app.use('/book/',fetch_book);
 //method: GET
 app.use('/book/:title/',fetch_book);
 
+//@route: /book/update/:id
+//method: PUT
+app.use('/book/',add_book);
+
 //@route: /book/delete
 //method: Delete
 
