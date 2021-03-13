@@ -27,4 +27,8 @@ app.use('/book/',add_book);
 //method: GET
 app.use('/book/',fetch_book);
 
+//@route: /book/title/
+//method: GET
+app.use('/book/title/',fetch_book);
+
 app.listen(PORT,()=>console.log(`App started on port: ${PORT}`));
